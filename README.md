@@ -1,14 +1,10 @@
-# Менеджер задач (Task Manager)
+# Tasks
 
 Веб-приложение для ведения списка дел с разбивкой по дням.
 
-## Возможности
+## Скрины и функционал
 
-- Регистрация, вход и выход (аутентификация Django)
-- Изоляция данных: пользователь работает только со своими задачами
-- Просмотр задач по дням с навигацией и кнопкой «Сегодня»
-- Создание, редактирование, удаление задач и переключение статуса «выполнено»
-- Переключение статуса без перезагрузки страницы (HTMX)
+
 
 ## Технологии
 
@@ -19,14 +15,13 @@
 - Docker
 - pytest
 
-## Запуск через Docker (рекомендуется)
+## Запуск через Docker
 
 Нужен установленный Docker. В корне проекта должен лежать файл `.env` (см. ниже).
 
 ```bash
 docker compose up -d --build
 docker compose exec web python manage.py migrate
-docker compose exec web python manage.py createsuperuser   # по желанию
 ```
 
 Приложение: http://localhost
@@ -48,7 +43,7 @@ DB_HOST=db
 DB_PORT=5432
 ```
 
-Файл не коммитится. Сгенерировать `SECRET_KEY`:
+Сгенерировать `SECRET_KEY`:
 
 ```bash
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
