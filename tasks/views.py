@@ -69,7 +69,7 @@ def task_create(request: HttpRequest) -> HttpResponse:
 @require_http_methods(["POST"])
 @login_required
 def task_toggle(request: HttpRequest, pk: int) -> HttpResponse:
-    '''Переключает статус «выполнено» и возвращает обновлённую карточку.'''
+    '''Переключает статус «выполнено» и возвращает обновлённую карточку'''
     task = get_object_or_404(Task, pk=pk, user=request.user)
     task.is_done = not task.is_done
     task.save()
@@ -88,7 +88,7 @@ def task_toggle(request: HttpRequest, pk: int) -> HttpResponse:
 @require_http_methods(["POST"])
 @login_required
 def task_delete(request: HttpRequest, pk: int) -> HttpResponse:
-    '''Удаляет задачу текущего юзера и возвращает на список выбранного дня.'''
+    '''Удаляет задачу текущего юзера и возвращает на список выбранного дня'''
     task = get_object_or_404(Task, pk=pk, user=request.user)
     task.delete()
     date_str = request.POST.get('date')
@@ -114,7 +114,7 @@ def task_edit(request: HttpRequest, pk: int) -> HttpResponse:
 
 
 def register(request: HttpRequest) -> HttpResponse:
-    '''Регистрирует нового пользователя и сразу логинит его.'''
+    '''Регистрирует нового пользователя и сразу логинит его'''
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
