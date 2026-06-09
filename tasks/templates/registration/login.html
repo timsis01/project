@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
+            <h1 class="text-center mb-4">Вход</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <button class="btn btn-primary" type="submit">Войти</button>
+                    <a href="{% url 'tasks:register' %}">Регистрация</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

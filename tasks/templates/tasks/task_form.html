@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Новая задача{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">Новая задача</h4>
+                <a href="{% url 'tasks:task_list' %}" class="btn-close" aria-label="Закрыть"></a>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                {% if date_str %}<input type="hidden" name="date" value="{{ date_str }}">{% endif %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
