@@ -49,20 +49,6 @@ DB_PORT=5432
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 ```
 
-## Запуск локально (без Docker)
-
-Нужен запущенный PostgreSQL. Подними только базу в Docker (`docker compose up -d db`) или поставь Postgres на ПК, и укажи в `.env` `DB_HOST=localhost`.
-
-```bash
-python -m venv venv      
-source venv/bin/activate       
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
-Приложение: http://127.0.0.1:8000
-
 ## Тесты
 
 ```bash
